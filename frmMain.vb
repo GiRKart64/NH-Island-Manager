@@ -191,33 +191,58 @@ Public Class frmMain
     End Sub
 
     Public Sub OpenIsland(ByVal iEmu As Integer)
+
+        sEmuNames(0) = "Yuzu"
+        sEmuNames(1) = "Ryujinx"
+        iEmuTitles(0) = 11
+        iEmuTitles(1) = 20
+
         Dim sFull As String = ""
-        Dim p() As Process
-        p = Process.GetProcessesByName("yuzu")
-        If p.Count > 0 Then
-            MsgBox("An instance of Yuzu is already running", MsgBoxStyle.Information, Me.Text)
-        Else
-            p = Process.GetProcessesByName("ryujinx")
-            If p.Count > 0 Then
-                MsgBox("An instance of Ryujinx is already running", MsgBoxStyle.Information, Me.Text)
-            Else
+        Dim p As Process
+        Dim acEmuGameActive As Byte = 0
 
-                If My.Computer.FileSystem.FileExists(sPaths(1)) = False Then
-                    MsgBox(sErrorMsgs(1), MsgBoxStyle.Information, Me.Text)
+        For Each p In Process.GetProcessesByName(sEmuNames(iEmu - 1))
+
+            If p.MainWindowTitle.Substring(0, sEmuNames(iEmu - 1).Length).ToLower = sEmuNames(iEmu - 1).ToLower Then
+                acEmuGameActive = 1
+            End If
+
+            If Len(p.MainWindowTitle) > iEmuTitles(iEmu - 1) Then
+                If p.MainWindowTitle.Substring(iEmuTitles(iEmu - 1), 6) = "Animal" Then
+                    acEmuGameActive = 2
                 End If
+            Else
+            End If
 
-                If My.Computer.FileSystem.FileExists(sPaths(iEmu + 1)) = False Then
-                    MsgBox(sErrorMsgs(iEmu + 1), MsgBoxStyle.Information, Me.Text)
-                Else
+        Next
 
+
+        If My.Computer.FileSystem.FileExists(sPaths(1)) = False Then
+            MsgBox(sErrorMsgs(1), MsgBoxStyle.Information, Me.Text)
+            Exit Sub
+        End If
+
+
+        If My.Computer.FileSystem.FileExists(sPaths(iEmu + 1)) = False Then
+            MsgBox(sErrorMsgs(iEmu + 1), MsgBoxStyle.Information, Me.Text)
+        Else
+
+            Select Case acEmuGameActive
+                Case 0
                     sFull = IIf(iEmu = 1, IIf(iSettings(7) = 1, " -f", ""), IIf(iSettings(7) = 1, " --fullscreen", ""))
                     RunCMD("rmdir " & """" & sPaths(iEmu + 3) & """")
                     RunCMD("mklink /J " & """" & sPaths(iEmu + 3) & """" & " " & """" & IslandListView.FocusedItem.Tag & """")
                     Shell("""" & sPaths(iEmu + 1) & """" & sFull & IIf(iEmu = 1, " -g ", " ") & """" & sPaths(1) & """", AppWinStyle.NormalFocus)
+                Case 1
+                    RunCMD("rmdir " & """" & sPaths(iEmu + 3) & """")
+                    RunCMD("mklink /J " & """" & sPaths(iEmu + 3) & """" & " " & """" & IslandListView.FocusedItem.Tag & """")
+                    MsgBox(sEmuNames(iEmu - 1) & " is already running, island has been set to " & Me.IslandListView.FocusedItem.Text, MsgBoxStyle.Information, Me.Text)
+                Case 2
+                    MsgBox("Animal Crossing: New Horzions is already running on " & sEmuNames(iEmu - 1) & ", please close the game to continue", MsgBoxStyle.Information, Me.Text)
+            End Select
 
-                End If
-            End If
         End If
+     
 
     End Sub
     Private Sub YuzuToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles YuzuToolStripMenuItem.Click
@@ -278,7 +303,11 @@ Public Class frmMain
     End Sub
 
     Private Sub ToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton3.Click
-        frmProperties.ShowDialog()
+        If IslandListView.Items.Count = 0 Then
+            Exit Sub
+        Else
+            frmProperties.ShowDialog()
+        End If
     End Sub
 
 

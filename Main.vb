@@ -2,10 +2,10 @@
 Imports System.IO
 
 Module Main
+    Public sEmuNames(2) As String
+    Public iEmuTitles(2) As Integer
     Public sErrorMsgs(4) As String
-
     Public iSettings(8) As Integer
-
     Public sPaths(6) As String
     '0 = Islands (Saved)
     '1 = Game location (Saved)
@@ -13,11 +13,6 @@ Module Main
     '3 = Ryujinx (Saved)
     '4 = Save Location Yuzu (Runtime)
     '5 = Save Location Ryujinx (Runtime)
-
-
-
-
-
 
     Public Sub GetIslands()
         If sPaths(0) = "" Then
@@ -67,7 +62,11 @@ Module Main
         frmMain.IslandListView.LargeImageList = imgList
         frmMain.IslandListView.SmallImageList = imgList
 
-
+        If frmMain.IslandListView.Items.Count = 0 Then
+            frmMain.ToolStripButton3.Enabled = False
+        Else
+            frmMain.ToolStripButton3.Enabled = True
+        End If
     End Sub
 
 
