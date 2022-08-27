@@ -28,6 +28,7 @@ Partial Class frmAboutBox
         Me.LabelProductName = New System.Windows.Forms.Label()
         Me.LabelInformation = New System.Windows.Forms.Label()
         Me.OKButton = New System.Windows.Forms.Button()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -68,11 +69,23 @@ Partial Class frmAboutBox
         Me.OKButton.Text = "OK"
         Me.OKButton.UseVisualStyleBackColor = True
         '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(286, 60)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(246, 13)
+        Me.LinkLabel1.TabIndex = 5
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "https://github.com/GiRKart64/NH-Island-Manager"
+        Me.LinkLabel1.VisitedLinkColor = System.Drawing.Color.Blue
+        '
         'frmAboutBox
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(569, 265)
+        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.OKButton)
         Me.Controls.Add(Me.LabelInformation)
         Me.Controls.Add(Me.LabelProductName)
@@ -94,5 +107,6 @@ Partial Class frmAboutBox
     Friend WithEvents LabelProductName As System.Windows.Forms.Label
     Friend WithEvents LabelInformation As System.Windows.Forms.Label
     Friend WithEvents OKButton As System.Windows.Forms.Button
+    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
 
 End Class

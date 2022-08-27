@@ -191,15 +191,14 @@ Public Class frmMain
     End Sub
 
     Public Sub OpenIsland(ByVal iEmu As Integer)
-
         sEmuNames(0) = "Yuzu"
         sEmuNames(1) = "Ryujinx"
-        iEmuTitles(0) = 11
-        iEmuTitles(1) = 20
+    
 
         Dim sFull As String = ""
         Dim p As Process
         Dim acEmuGameActive As Byte = 0
+
 
         For Each p In Process.GetProcessesByName(sEmuNames(iEmu - 1))
 
@@ -207,11 +206,9 @@ Public Class frmMain
                 acEmuGameActive = 1
             End If
 
-            If Len(p.MainWindowTitle) > iEmuTitles(iEmu - 1) Then
-                If p.MainWindowTitle.Substring(iEmuTitles(iEmu - 1), 6) = "Animal" Then
-                    acEmuGameActive = 2
-                End If
-            Else
+
+            If InStr(1, p.MainWindowTitle, "Animal Crossing: New Horizons") > 0 Then
+                acEmuGameActive = 2
             End If
 
         Next
@@ -313,5 +310,10 @@ Public Class frmMain
 
     Private Sub PropertiesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PropertiesToolStripMenuItem.Click
         frmProperties.ShowDialog()
+    End Sub
+
+    Private Sub OpenFolderToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenFolderToolStripMenuItem.Click
+        Shell("explorer.exe " & IslandListView.FocusedItem.Tag, AppWinStyle.NormalFocus)
+
     End Sub
 End Class

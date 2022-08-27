@@ -81,8 +81,13 @@
             End If
         End If
 
-        frmMain.IslandListView.Items(frmMain.IslandListView.FocusedItem.Index).SubItems.Item(2).Text = TextBox2.Text
-        My.Computer.FileSystem.WriteAllText(frmMain.IslandListView.FocusedItem.Tag & "\description.txt", TextBox2.Text, False)
+
+        If TextBox2.Text = "" Then
+        Else
+            frmMain.IslandListView.Items(frmMain.IslandListView.FocusedItem.Index).SubItems.Item(2).Text = TextBox2.Text
+            My.Computer.FileSystem.WriteAllText(frmMain.IslandListView.FocusedItem.Tag & "\description.txt", TextBox2.Text, False)
+        End If
+
 
         Me.Close()
         Me.Dispose()

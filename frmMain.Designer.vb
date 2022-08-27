@@ -54,6 +54,8 @@ Partial Class frmMain
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.PropertiesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.OpenFolderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -161,7 +163,7 @@ Partial Class frmMain
         Me.SettingsToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Padding = New System.Windows.Forms.Padding(0)
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 20)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(113, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         Me.SettingsToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopLeft
         Me.SettingsToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
@@ -169,25 +171,25 @@ Partial Class frmMain
         'RefreshToolStripMenuItem
         '
         Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
-        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
         Me.RefreshToolStripMenuItem.Text = "Refresh"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(110, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStrip1
@@ -249,36 +251,47 @@ Partial Class frmMain
         '
         Me.YuzuToolStripMenuItem.AutoSize = False
         Me.YuzuToolStripMenuItem.Name = "YuzuToolStripMenuItem"
-        Me.YuzuToolStripMenuItem.Padding = New System.Windows.Forms.Padding(0, 0, 0, 0)
-        Me.YuzuToolStripMenuItem.Size = New System.Drawing.Size(98, 20)
+        Me.YuzuToolStripMenuItem.Padding = New System.Windows.Forms.Padding(0)
+        Me.YuzuToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.YuzuToolStripMenuItem.Text = "Yuzu"
         '
         'RyujinxToolStripMenuItem
         '
         Me.RyujinxToolStripMenuItem.AutoSize = False
         Me.RyujinxToolStripMenuItem.Name = "RyujinxToolStripMenuItem"
-        Me.RyujinxToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
+        Me.RyujinxToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.RyujinxToolStripMenuItem.Text = "Ryujinx"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(95, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(124, 6)
         '
         'PropertiesToolStripMenuItem
         '
         Me.PropertiesToolStripMenuItem.AutoSize = False
         Me.PropertiesToolStripMenuItem.Name = "PropertiesToolStripMenuItem"
-        Me.PropertiesToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
+        Me.PropertiesToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.PropertiesToolStripMenuItem.Text = "Properties"
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.YuzuToolStripMenuItem, Me.RyujinxToolStripMenuItem, Me.ToolStripSeparator2, Me.PropertiesToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.YuzuToolStripMenuItem, Me.RyujinxToolStripMenuItem, Me.ToolStripSeparator2, Me.OpenFolderToolStripMenuItem, Me.ToolStripSeparator3, Me.PropertiesToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(99, 74)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(128, 126)
+        '
+        'OpenFolderToolStripMenuItem
+        '
+        Me.OpenFolderToolStripMenuItem.Name = "OpenFolderToolStripMenuItem"
+        Me.OpenFolderToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.OpenFolderToolStripMenuItem.Text = "Open Folder"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(124, 6)
         '
         'frmMain
         '
@@ -334,5 +347,7 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents PropertiesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents OpenFolderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
 
 End Class

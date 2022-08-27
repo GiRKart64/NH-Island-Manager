@@ -3,7 +3,6 @@ Imports System.IO
 
 Module Main
     Public sEmuNames(2) As String
-    Public iEmuTitles(2) As Integer
     Public sErrorMsgs(4) As String
     Public iSettings(8) As Integer
     Public sPaths(6) As String
