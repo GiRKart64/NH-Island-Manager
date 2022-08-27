@@ -1,6 +1,6 @@
 About NH Island Manager:
 
-NH Island Manager is a tool to use with Yuzu and Ryujinx if you have multiple islands you want to work on or view. It saves the trouble of constantly copying and replacing files.
+NH Island Manager is a tool to use with Yuzu and Ryujinx if you have multiple Animal Crossing islands you want to work on or view. It saves the trouble of constantly copying and replacing files.
 
 How to install:
 
