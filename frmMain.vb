@@ -15,13 +15,14 @@ Public Class frmMain
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        'IslandListView.BackColor = Color.MediumPurple
-
         MenuStrip1.Visible = False
-        sErrorMsgs(0) = "Island folder not found, please specify a valid directory in settings"
-        sErrorMsgs(1) = "Animal Crossing game not found, please specify a valid file in settings"
-        sErrorMsgs(2) = "Yuzu not found, please specify a valid path in settings"
-        sErrorMsgs(3) = "Ryujinx not found, please specify a valid path in settings"
+        sEmuNames(0) = "Yuzu"
+        sEmuNames(1) = "Ryujinx"
+
+        sErrorMsgs(0) = "Island folder not found. Please specify a valid directory in settings."
+        sErrorMsgs(1) = "Animal Crossing game not found. Please specify a valid file in settings"
+        sErrorMsgs(2) = "Yuzu not found. Please specify a valid path in settings."
+        sErrorMsgs(3) = "Ryujinx not found. Please specify a valid path in settings."
 
         ImageList032.Images.Add(BGImage(My.Resources.img032, 32))
         ImageList064.Images.Add(BGImage(My.Resources.img064, 64))
@@ -31,8 +32,8 @@ Public Class frmMain
 
         Dim str As String
         Dim strArr() As String
-
         Dim i As Integer
+
         sPaths(4) = Environment.GetEnvironmentVariable("UserProfile") & "\AppData\Roaming\yuzu\nand\user\save\0000000000000000\00000000000000000000000000000000\01006F8002326000" 'link "01006F8002326000" dir (More info needed?)
         sPaths(5) = Environment.GetEnvironmentVariable("UserProfile") & "\AppData\Roaming\Ryujinx\bis\user\save\0000000000000001\0" 'link "0" dir (More info needed?)
 
@@ -58,7 +59,6 @@ Public Class frmMain
 
          For i = 0 To 3
                 str = sReader.ReadLine
-                'str = IIf(str.Substring(str.Length - 1) = "=", "", str)
                 strArr = str.Split("=")
                 sPaths(i) = strArr(1)
             Next i
@@ -96,7 +96,7 @@ Public Class frmMain
 
         ToolStripStatusLabel2.Text = ""
         CType(FileToolStripMenuItem.DropDown, ToolStripDropDownMenu).ShowImageMargin = False
-
+        ToolStripButton5.ToolTipText = "Open " & sEmuNames(iSettings(6) - 1) & " Animal Crossing Save Folder"
 
 
     End Sub
@@ -148,6 +148,8 @@ Public Class frmMain
                 RyujinxToolStripMenuItem.Enabled = False
             End If
 
+            'OpenFolderToolStripMenuItem.Text = "Open " & """" & IslandListView.FocusedItem.Text & """" & " Folder" ?
+
             ContextMenuStrip1.Show(IslandListView, New Point(e.X, e.Y))
         End If
     End Sub
@@ -191,9 +193,6 @@ Public Class frmMain
     End Sub
 
     Public Sub OpenIsland(ByVal iEmu As Integer)
-        sEmuNames(0) = "Yuzu"
-        sEmuNames(1) = "Ryujinx"
-    
 
         Dim sFull As String = ""
         Dim p As Process
@@ -233,9 +232,9 @@ Public Class frmMain
                 Case 1
                     RunCMD("rmdir " & """" & sPaths(iEmu + 3) & """")
                     RunCMD("mklink /J " & """" & sPaths(iEmu + 3) & """" & " " & """" & IslandListView.FocusedItem.Tag & """")
-                    MsgBox(sEmuNames(iEmu - 1) & " is already running, island has been set to " & Me.IslandListView.FocusedItem.Text, MsgBoxStyle.Information, Me.Text)
+                    MsgBox(sEmuNames(iEmu - 1) & " is already running." & " Island has been set to " & Me.IslandListView.FocusedItem.Text & ".", MsgBoxStyle.Information, Me.Text)
                 Case 2
-                    MsgBox("Animal Crossing: New Horzions is already running on " & sEmuNames(iEmu - 1) & ", please close the game to continue", MsgBoxStyle.Information, Me.Text)
+                    MsgBox("Animal Crossing: New Horzions is already running on " & sEmuNames(iEmu - 1) & ". Please close the game to continue.", MsgBoxStyle.Information, Me.Text)
             End Select
 
         End If
@@ -314,6 +313,17 @@ Public Class frmMain
 
     Private Sub OpenFolderToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenFolderToolStripMenuItem.Click
         Shell("explorer.exe " & IslandListView.FocusedItem.Tag, AppWinStyle.NormalFocus)
+    End Sub
+
+
+
+    Private Sub ToolStripButton5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton5.Click
+
+        If My.Computer.FileSystem.DirectoryExists(sPaths(3 + iSettings(6))) = True Then
+            Shell("explorer.exe " & sPaths(3 + iSettings(6)), AppWinStyle.NormalFocus)
+        Else
+            MsgBox(sEmuNames(iSettings(6) - 1) & " save directory not found.", MsgBoxStyle.Information, Me.Text)
+        End If
 
     End Sub
 End Class

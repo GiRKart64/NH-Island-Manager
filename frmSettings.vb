@@ -5,8 +5,6 @@ Public Class frmSettings
     Public iChanged As Integer = iSettings(5)
     Private Sub frmSettings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        ' ComboBox1.SelectedValue = iSettings(0)
-        'MsgBox(iSettings(0))
         Me.ComboBox1.SelectedItem = Me.ComboBox1.Items().Item(iSettings(0))
 
         TextBox1.Text = sPaths(0)
@@ -75,7 +73,7 @@ Public Class frmSettings
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
 
         iSettings(6) = IIf(RadioButton1.Checked = True, 1, 2)
-
+        frmMain.ToolStripButton5.ToolTipText = IIf(iSettings(6) = 1, "Open Yuzu Animal Crossing Save Folder", "Open Ryujinx Animal Crossing Save Folder")
 
         If CheckBox1.CheckState = iSettings(5) Then
             iSettings(5) = CheckBox1.CheckState

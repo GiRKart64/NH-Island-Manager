@@ -79,9 +79,7 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -182,7 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IslandLauncher.ico" />
-    <None Include="My Project\app.manifest" />
     <None Include="Resources\img032.png" />
     <None Include="Resources\img064.png" />
     <None Include="Resources\img128.png" />
@@ -210,7 +207,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

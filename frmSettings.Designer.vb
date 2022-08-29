@@ -31,6 +31,7 @@ Partial Class frmSettings
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -44,7 +45,6 @@ Partial Class frmSettings
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -132,6 +132,16 @@ Partial Class frmSettings
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Emulator Settings"
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(17, 93)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(77, 17)
+        Me.CheckBox2.TabIndex = 9
+        Me.CheckBox2.Text = "Full screen"
+        Me.CheckBox2.UseVisualStyleBackColor = True
         '
         'RadioButton2
         '
@@ -257,16 +267,6 @@ Partial Class frmSettings
         Me.Button6.TabIndex = 4
         Me.Button6.Text = "Cancel"
         Me.Button6.UseVisualStyleBackColor = True
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(17, 93)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(77, 17)
-        Me.CheckBox2.TabIndex = 9
-        Me.CheckBox2.Text = "Full screen"
-        Me.CheckBox2.UseVisualStyleBackColor = True
         '
         'frmSettings
         '

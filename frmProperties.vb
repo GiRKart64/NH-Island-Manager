@@ -8,7 +8,6 @@
 
     Private Sub frmProperties_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ImageChanged = False
-        'frmMain.ToolStripStatusLabel2.Text
         TabPage1.Text = frmMain.IslandListView.FocusedItem.Text
         PictureBox1.ImageLocation = GetPreviewImage(frmMain.IslandListView.FocusedItem.Tag)
         If PictureBox1.ImageLocation = "" Then
@@ -20,7 +19,6 @@
         Dim iRes As Integer
 
 
-        'MsgBox(frmMain.IslandListView.FocusedItem.Tag & "\Villager" & 1)
         For i = 0 To 7
             If My.Computer.FileSystem.DirectoryExists(frmMain.IslandListView.FocusedItem.Tag & "\Villager" & i) = True Then
                 iRes = i + 1
